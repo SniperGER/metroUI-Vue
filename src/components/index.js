@@ -4,6 +4,7 @@ import Page from './Page/Component.vue'
 import AccentColorSelector from './AccentColorSelector/Component.vue'
 import AppBarButton from './AppBarButton/Component.vue'
 import AppBarSeparator from './AppBarSeparator/Component.vue'
+import BackgroundThemeSelector from './BackgroundThemeSelector/Component.vue'
 import Button from './Button/Component.vue'
 import CheckBox from './CheckBox/Component.vue'
 import ComboBox from './ComboBox/Component.vue'
@@ -42,6 +43,7 @@ const components = [
 	AccentColorSelector,
 	AppBarButton,
 	AppBarSeparator,
+	BackgroundThemeSelector,
 	Button,
 	CheckBox,
 	ComboBox,

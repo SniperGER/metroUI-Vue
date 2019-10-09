@@ -60,6 +60,22 @@
 				background-color: fade(@accentDark1, 80%);
 			}
 		}
+		
+		.accent-color-selector {
+			.accent-color-item[data-accent="@{name}"],
+			.accent-color-item[data-accent-name="@{displayName}"] {
+				&:before {
+					display: initial;
+				}
+			}
+		}
+	}
+	
+	.accent-color-selector {
+		.accent-color-item[data-accent="@{name}"],
+		.accent-color-item[data-accent-name="@{name}"] {
+			background-color: @accentColor;
+		}
 	}
 }
 

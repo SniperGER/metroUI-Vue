@@ -1,6 +1,7 @@
 import View from './View/Component.vue'
 import Page from './Page/Component.vue'
 
+import AccentColorSelector from './AccentColorSelector/Component.vue'
 import AppBarButton from './AppBarButton/Component.vue'
 import AppBarSeparator from './AppBarSeparator/Component.vue'
 import Button from './Button/Component.vue'
@@ -38,6 +39,7 @@ const components = [
 	View,
 	Page,
 	
+	AccentColorSelector,
 	AppBarButton,
 	AppBarSeparator,
 	Button,

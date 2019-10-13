@@ -9,7 +9,7 @@
 import uuid from 'uuid/v4'
 
 export default {
-	name: "MetroCheckbox",
+	name: "MetroCheckBox",
 	props: {
 		name: String,
 		content: String,

@@ -159,7 +159,9 @@ export default {
 			if (this.currentPage === pageId) return;
 			if (!this.pages[pageId]) return;
 			
-			if (this.history.lastObject() !== pageId) this.history.push(pageId);
+			if (this.backButtonVisible) {
+				if (this.history.lastObject() !== pageId) this.history.push(pageId);
+			}
 			
 			if (this.menuItems[pageId]) {
 				if (this.menuItems[this.currentPage]) this.menuItems[this.currentPage].classList.remove("selected");
@@ -198,7 +200,7 @@ export default {
 			}));
 		},
 		async goBack() {
-			if (this.history.length <= 1) return;
+			if (!this.backButtonVisible || this.history.length <= 1) return;
 			
 			let lastPage = this.history[this.history.length - 2];
 			this.history.pop();

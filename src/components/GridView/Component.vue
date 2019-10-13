@@ -1,6 +1,6 @@
 <template>
 	<div :class="`grid-view ${flowDirection}`">
-		<div class="grid-view-item" :class="{'selected': selectedItems.indexOf(index) >= 0}" v-for="(item, index) in itemsSource" :key="index" @click="_selectItem($event, index)">
+		<div class="grid-view-item" :class="{'selected': selectedItems.indexOf(index) >= 0}" v-for="(item, index) in itemsSource" :key="index" @click="_selectItem($event, index); _clickItem(item, index)">
 			<div class="grid-view-item-content">
 				<slot name="item-template" :local="item" />
 			</div>
@@ -26,7 +26,8 @@ export default {
 			validator: value => {
 				return ["none", "single", "multiple"].indexOf(value) >= 0
 			}
-		}
+		},
+		isItemClickEnabled: Boolean
 	},
 	data() {
 		return {
@@ -64,6 +65,11 @@ export default {
 			}
 			
 			this.$emit("selectionChanged", this, {});
+		},
+		_clickItem(item, index) {
+			if (!this.isItemClickEnabled) return;
+			
+			this.$emit("itemClick", this, item, index);
 		}
 	}
 }

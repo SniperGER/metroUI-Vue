@@ -132,6 +132,9 @@ export default {
 			}
 			this.$refs["select"].value = item;
 			
+			document.body.removeChild(this.$refs["popup"]);
+			this.$el.appendChild(this.$refs["popup"]);
+			
 			this.$emit("input", this.$data._value);
 			this.$refs["select"].dispatchEvent(new Event("input"));
 		}

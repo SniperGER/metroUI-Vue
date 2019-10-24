@@ -29,7 +29,7 @@ export default {
 				this.$emit("unchecked", e);
 			}
 			
-			this.$emit("input", e.target.checked);
+			this.$emit("input", e);
 		}
 	}
 }

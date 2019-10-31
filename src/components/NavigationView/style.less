@@ -38,11 +38,6 @@
 		background-color: transparent;
 		
 		&:not(:disabled) {
-			&:hover:not(:active) {
-				box-shadow: none;
-				background-color: var(--list-low);
-			}
-			
 			&:active {
 				background-color: var(--list-medium-low);
 			}
@@ -512,5 +507,21 @@
 	}
 	&.top {
 		.top();
+	}
+}
+
+body:not(.touch) {
+	.navigation-view {
+		& > .stack-panel.pane-toggle-button-container,
+		& > .pane-content {
+			button {
+				&:not(:disabled) {
+					&:hover:not(:active) {
+						box-shadow: none;
+						background-color: var(--list-low);
+					}
+				}
+			}
+		}
 	}
 }

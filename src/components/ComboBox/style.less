@@ -19,10 +19,6 @@
 		box-shadow: inset 0 0 0 2px var(--base-medium-low);
 		cursor: default;
 		
-		&:hover:not(:active) {
-			box-shadow: inset 0 0 0 2px var(--base-medium);
-		}
-		
 		&:active {
 			background-color: var(--base-low);
 		}
@@ -81,10 +77,6 @@
 			cursor: default;
 			white-space: nowrap;
 			
-			&:hover:not(:active) {
-				background-color: var(--list-low);
-			}
-			
 			&:active {
 				background-color: var(--list-medium-low);
 				transform: scale(0.99);
@@ -93,9 +85,34 @@
 			&.selected {
 				background-color: var(--list-accent-low);
 				
-				&:hover:not(:active),
 				&:active {
 					background-color: var(--list-accent-medium);
+				}
+			}
+		}
+	}
+}
+
+body:not(.touch) {
+	.combo-box {
+		.combo-box-content {
+			&:hover:not(:active) {
+				box-shadow: inset 0 0 0 2px var(--base-medium);
+			}
+		}
+	}
+	
+	.combo-box-popup {
+		.combo-box-items {
+			.combo-box-item {
+				&:hover:not(:active) {
+					background-color: var(--list-low);
+				}
+				
+				&.selected {
+					&:hover:not(:active) {
+						background-color: var(--list-accent-medium);
+					}
 				}
 			}
 		}

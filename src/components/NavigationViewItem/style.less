@@ -55,10 +55,6 @@
 	}
 	
 	&:not(:disabled) {
-		&:hover:not(:active) {
-			background-color: var(--list-low) !important;
-		}
-		
 		&:active {
 			background-color: var(--list-medium-low) !important;
 			
@@ -83,5 +79,15 @@
 		height: 24px;
 		background-color: var(--system-accent-color);
 		transform: translate3d(0, -50%, 0);
+	}
+}
+
+body:not(.touch) {
+	.navigation-view-item {
+		&:not(:disabled) {
+			&:hover:not(:active) {
+				background-color: var(--list-low) !important;
+			}
+		}
 	}
 }

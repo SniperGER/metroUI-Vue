@@ -30,13 +30,7 @@
 		width: 20px;
 		height: 36px;
 		padding: 8px 0;
-		visibility: hidden;
 		color: var(--chrome-black-high);
-		
-		&:hover:not(:active) {
-			box-shadow: none;
-			background-color: var(--base-medium-low);
-		}
 		
 		&:active {
 			background-color: var(--base-medium);
@@ -54,11 +48,25 @@
 	.next-button {
 		right: 0;
 	}
-	
-	&:hover {
+}
+
+.body:not(.touch) {
+	.flip-view {
 		.previous-button,
 		.next-button {
-			visibility: visible;
+			visibility: hidden;
+			
+			&:hover:not(:active) {
+				box-shadow: none;
+				background-color: var(--base-medium-low);
+			}
+		}
+		
+		&:hover {
+			.previous-button,
+			.next-button {
+				visibility: visible;
+			}
 		}
 	}
 }

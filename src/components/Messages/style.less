@@ -123,10 +123,6 @@
 			color: var(--base-medium);
 		}
 		
-		&:hover:not(:focus) {
-			box-shadow: inset 0 0 0 2px var(--base-medium-high);
-		}
-		
 		&:not(:focus) {
 			color: var(--base-high);
 		}
@@ -147,6 +143,16 @@
 
 			&::placeholder {
 				color: var(--chrome-disabled-low);
+			}
+		}
+	}
+}
+
+body:not(.touch) {
+	.messages {
+		textarea {
+			&:hover:not(:focus) {
+				box-shadow: inset 0 0 0 2px var(--base-medium-high);
 			}
 		}
 	}

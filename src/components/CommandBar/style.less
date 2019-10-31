@@ -34,10 +34,6 @@
 			width: 48px;
 			height: 100%;
 			
-			&:hover:not(:active) {
-				background-color: var(--list-low);
-			}
-			
 			&:active {
 				background-color: var(--list-medium-low);
 			}
@@ -142,6 +138,18 @@
 		
 		.secondary-commands {
 			transform: translate3d(0, 100%, 0);
+		}
+	}
+}
+
+body:not(.touch) {
+	.command-bar {
+		.command-bar-content {
+			.more-button {
+				&:hover:not(:active) {
+					background-color: var(--list-low);
+				}
+			}
 		}
 	}
 }

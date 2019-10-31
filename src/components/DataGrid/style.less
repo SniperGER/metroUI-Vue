@@ -62,10 +62,6 @@
 				opacity: 0.4;
 			}
 			
-			&:hover:not(:active) {
-				background-color: var(--list-low);
-			}
-			
 			&:active {
 				background-color: var(--list-medium-low);
 			}
@@ -77,10 +73,6 @@
 		
 		.row {
 			white-space: nowrap;
-			
-			&:hover + .row-background:after {
-				background-color: var(--list-low);
-			}
 			
 			.cell {
 				cursor: default;
@@ -125,12 +117,32 @@
 				z-index: -1;
 			}
 			
-			&:hover:after {
-				background-color: var(--list-low);
-			}
-			
 			&:active {
 				pointer-events: none;
+			}
+		}
+	}
+}
+
+body:not(.touch) {
+	.data-grid {
+		.table {
+			.column-header-item {
+				&:hover:not(:active) {
+					background-color: var(--list-low);
+				}
+			}
+			
+			.row {
+				&:hover + .row-background:after {
+					background-color: var(--list-low);
+				}
+			}
+			
+			.row-background {
+				&:hover:after {
+					background-color: var(--list-low);
+				}
 			}
 		}
 	}

@@ -18,11 +18,6 @@ button {
 			background-color: var(--system-accent-color) !important;
 		}
 		
-		&:hover:not(:active) {
-			background-color: var(--base-low);
-			box-shadow: inset 0 0 0 2px var(--base-medium-low);
-		}
-		
 		&:active {
 			background-color: var(--base-medium-low);
 		}
@@ -30,5 +25,16 @@ button {
 	
 	&:disabled {
 		color: var(--base-medium-low);
+	}
+}
+
+body:not(.touch) {
+	button {
+		&:not(:disabled) {
+			&:hover:not(:active) {
+				background-color: var(--base-low);
+				box-shadow: inset 0 0 0 2px var(--base-medium-low);
+			}
+		}
 	}
 }

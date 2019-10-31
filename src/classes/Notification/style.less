@@ -61,10 +61,6 @@
 				color: fade(#FFFFFF, 40%);
 				font-size: 13px;
 			}
-			
-			&:hover:not(:active) .icon {
-				color: #FFFFFF;
-			}
 		}
 		
 		.notification-icon {
@@ -115,10 +111,6 @@
 						color: fade(#FFFFFF, 40%);
 					}
 				}
-				&:hover:not(:active):not(:focus) {
-					background-color: fade(#000000, 60%);
-					box-shadow: inset 0 0 0 2px var(--system-accent-color-light-2);
-				}
 			}
 			
 			.list {
@@ -127,16 +119,6 @@
 				&:not(.open) {
 					.list-inner .list-item {
 						color: #FFFFFF;
-					}
-					
-					&:not(:hover) {
-						background-color: fade(#000000, 40%);
-						box-shadow: inset 0 0 0 2px var(--system-accent-color-light-1);
-					}
-					
-					&:hover {
-						background-color: fade(#000000, 60%);
-						box-shadow: inset 0 0 0 2px var(--system-accent-color-light-2);
 					}
 					
 					&:after {
@@ -175,9 +157,6 @@
 				}
 				
 				&:not(:disabled) {
-					&:hover:not(:active) {
-						box-shadow: inset 0 0 0 2px fade(#FFFFFF, 40%);
-					}
 					&:active {
 						background-color: fade(#FFFFFF, 40%);
 					}
@@ -209,10 +188,61 @@
 			transition: none;
 			animation: notification-dismiss 200ms cubic-bezier(.15, .97, .44, .9) forwards, notification-fade-out-slide 100ms 200ms ease-out forwards;
 		}
-		
-		&:not(:hover) {
+	}
+}
+
+body:not(.touch) {
+	.notification-center {
+		.notification {
 			.dismiss-button {
-				display: none;
+				&:hover:not(:active) .icon {
+					color: #FFFFFF;
+				}
+			}
+			
+			.notification-inputs {
+				input[type="email"],
+				input[type="number"],
+				input[type="password"],
+				input[type="search"],
+				input[type="tel"],
+				input[type="text"],
+				input[type="url"] {
+					&:hover:not(:active):not(:focus) {
+						background-color: fade(#000000, 60%);
+						box-shadow: inset 0 0 0 2px var(--system-accent-color-light-2);
+					}
+				}
+				
+				.list {
+					&:not(.open) {
+						&:not(:hover) {
+							background-color: fade(#000000, 40%);
+							box-shadow: inset 0 0 0 2px var(--system-accent-color-light-1);
+						}
+						
+						&:hover {
+							background-color: fade(#000000, 60%);
+							box-shadow: inset 0 0 0 2px var(--system-accent-color-light-2);
+						}
+					}
+				}
+			}
+			
+			.notification-buttons {
+				button {
+					&:not(:disabled) {
+						&:hover:not(:active) {
+							box-shadow: inset 0 0 0 2px fade(#FFFFFF, 40%);
+						}
+					}
+				}
+			}
+			
+			&:not(:hover) {
+				.dismiss-button {
+					display: none;
+				}
 			}
 		}
 	}

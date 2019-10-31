@@ -10,6 +10,10 @@ Object.keys(Classes).forEach(ClassKey => {
 export { Classes, Components };
 
 function install(Vue) {
+	if ("ontouchend" in window) {
+		document.body.classList.add("touch");
+	}
+	
 	Object.values(Components).forEach(Component => {
 		Vue.use(Component)
 	})

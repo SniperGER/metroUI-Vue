@@ -132,10 +132,6 @@ export default {
 			let navView = page.querySelector("div.navigation-view");
 			
 			if (elementIsParentOfPage(navView, page)) {
-				/*page.navigationView = new metroUI.NavigationView(page.querySelector("div.navigation-view"), {
-					parentView: page.params.parentView,
-					parentPage: page
-				})*/
 				page.navigationView = navView.__vue__;
 			}
 		}

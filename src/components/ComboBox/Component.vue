@@ -98,7 +98,6 @@ export default {
 					top: `${Math.max(Math.min(window.innerHeight - (height + 1), offset.top - 4 + selectionOffset), 0)}px`,
 					left: `${Math.max(Math.min(window.innerWidth - (width + 1), offset.left), 0)}px`,
 					minWidth: `${this.$refs["content"].clientWidth}px`
-					// transform: `translate3d(0, ${selectionOffset}px, 0)`
 				});
 			});
 			

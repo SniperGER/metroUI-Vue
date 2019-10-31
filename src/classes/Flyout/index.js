@@ -23,7 +23,6 @@ const NodeRenderer = class {
 HTMLElement.prototype.parentNodeOfClass = function(className) {
 	var node = this.parentNode;
 	while (node) {
-		// console.log(node);
 		if (node.classList && node.classList.contains(className)) {
 			return node;
 		}

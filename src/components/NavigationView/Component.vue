@@ -236,9 +236,6 @@ export default {
 				this.pages[lastPage].classList.remove("page-fade-in");
 			}, 150);
 			
-			// this.pages[lastPage].__vue__.$emit("loaded", this.pages[lastPage], {
-			// 	pageId: lastPage
-			// });
 			this.pages[lastPage].dispatchEvent(new CustomEvent("navigatedBackTo"));
 		},
 		setHeader(headerText) {

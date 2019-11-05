@@ -37,10 +37,6 @@
 			&:active {
 				background-color: var(--list-medium-low);
 			}
-			
-			i.symbol {
-				margin: 10px 14px;	
-			}
 		}
 	}
 	
@@ -99,9 +95,35 @@
 		}
 	}
 	
+	&.compact {
+		.command-bar-content .more-button {
+			.symbol-icon {
+				margin: 10px 14px;
+			}
+		}
+	}
+	
+	&.minimal {
+		.command-bar-content .more-button {
+			.symbol-icon {
+				margin: 0 14px;
+			}
+		}
+	}
+	
 	&.collapsed {
 		.primary-commands .app-bar-button label {
 			visibility: hidden;
+		}
+		
+		&.minimal {
+			.command-bar-content {
+				transform: translate3d(0, 20px, 0);
+			}
+			
+			.primary-commands .app-bar-button {
+				visibility: hidden;
+			}
 		}
 	}
 	

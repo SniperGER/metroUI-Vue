@@ -1,5 +1,5 @@
 <template>
-	<div :class="`command-bar ${isOpen ? 'expanded' : 'collapsed'}`">
+	<div :class="`command-bar ${isOpen ? 'expanded' : 'collapsed'} ${closedDisplayMode}`">
 		<div class="command-bar-content">
 			<div class="content" v-if="this.$slots['content']">
 				<slot name="content" />
@@ -28,6 +28,15 @@
 <script>
 export default {
 	name: "MetroCommandBar",
+	props: {
+		closedDisplayMode: {
+			type: String,
+			default: "compact",
+			validator: value => {
+				return ["compact", "minimal"].indexOf(value) >= 0
+			}
+		}
+	},
 	data() {
 		return {
 			isOpen: false

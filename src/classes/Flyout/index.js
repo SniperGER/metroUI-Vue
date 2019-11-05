@@ -49,8 +49,12 @@ export default class Flyout {
 		flyout.container.appendChild(content);
 		
 		if (flyout.params.content) {
-			if (typeof flyout.params.content === "object") {
+			if (flyout.params.content instanceof HTMLElement) {
+				content.appendChild(flyout.params.content);
+			} else if (typeof flyout.params.content === "object") {
 				content.appendChild(new NodeRenderer(flyout.params.content));
+			} else if (typeof flyout.params.content === "function") {
+				content.appendChild(new NodeRenderer(flyout.params.content(flyout)));
 			} else {
 				let parsedHTML = (new DOMParser()).parseFromString(flyout.params.content, "text/html");
 				if (parsedHTML.body.children.length) {
@@ -112,12 +116,14 @@ export default class Flyout {
 		flyout.eventListener = this._hide_internal.bind(flyout);
 
 		document.addEventListener("click", flyout.eventListener, true);
+		document.addEventListener("contextmenu", flyout.eventListener, true);
 	}
 	
 	hide() {
 		const flyout = this;
 
 		document.removeEventListener("click", flyout.eventListener, true);
+		document.removeEventListener("contextmenu", flyout.eventListener, true);
 		flyout.container.classList.add("animate-out");
 		flyout.container.classList.remove("animate-top");
 		flyout.container.classList.remove("animate-bottom");

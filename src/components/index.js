@@ -12,9 +12,13 @@ import CommandBar from './CommandBar/Component.vue'
 import DataGrid from './DataGrid/Component.vue'
 import FlipView from './FlipView/Component.vue'
 import FlipViewItem from './FlipViewItem/Component.vue'
+import Flyout from './Flyout/Component.vue'
 import FontIcon from './FontIcon/Component.vue'
 import GridView from './GridView/Component.vue'
 import HyperlinkButton from './HyperlinkButton/Component.vue'
+import MenuFlyout from './MenuFlyout/Component.vue'
+import MenuFlyoutItem from './MenuFlyoutItem/Component.vue'
+import MenuFlyoutSeparator from './MenuFlyoutSeparator/Component.vue'
 import Messages from './Messages/Component.vue'
 import NavigationView from './NavigationView/Component.vue'
 import NavigationViewItem from './NavigationViewItem/Component.vue'
@@ -51,9 +55,13 @@ const components = [
 	DataGrid,
 	FlipView,
 	FlipViewItem,
+	Flyout,
 	FontIcon,
 	GridView,
 	HyperlinkButton,
+	MenuFlyout,
+	MenuFlyoutItem,
+	MenuFlyoutSeparator,
 	Messages,
 	NavigationView,
 	NavigationViewItem,

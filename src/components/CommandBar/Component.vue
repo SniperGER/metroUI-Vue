@@ -35,7 +35,9 @@ export default {
 	},
 	mounted() {
 		this.$el.querySelectorAll(".app-bar-button").forEach(item => {
-			item.addEventListener("click", this.close);
+			if (!item.__vue__.$slots["flyout"]) {
+				item.addEventListener("click", this.close);
+			}
 		});
 	},
 	methods: {

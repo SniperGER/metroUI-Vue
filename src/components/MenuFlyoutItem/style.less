@@ -1,0 +1,45 @@
+.menu-flyout-item {
+	display: flex;
+	position: relative;
+	height: 32px;
+	padding: 0 12px;
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	
+	.menu-flyout-item-icon {
+		pointer-events: none;
+		margin: 8px 0;
+			
+		i.icon,
+		i.symbol,
+		svg {
+			width: 16px;
+			height: 16px;
+			font-size: 16px;
+			line-height: 16px;
+		}
+		
+		& + .menu-flyout-item-content {
+			margin-left: 12px;
+		}
+	}
+	
+	.menu-flyout-item-content {
+		pointer-events: none;
+		line-height: 32px;
+		white-space: nowrap;
+	}
+
+	&.disabled,
+	&[disabled] {
+		color: var(--base-medium-low);
+		pointer-events: none;
+	}
+	
+	&:active {
+		background-color: var(--list-medium-low);
+		transform: scale(0.98);
+	}
+}

@@ -1,7 +1,28 @@
+import Vue from "vue";
+
+const NodeRenderer = class {
+	constructor(element) {
+		const NodeConstructor = Vue.extend({
+			props: ['node'],
+			render(h) {
+				return this.node ? this.node : ''
+			}
+		});
+
+		const nodeRenderer = new NodeConstructor({
+			propsData: {
+				node: element
+			}
+		});
+		nodeRenderer.$mount();
+
+		return nodeRenderer.$el;
+	}
+}
+
 HTMLElement.prototype.parentNodeOfClass = function(className) {
 	var node = this.parentNode;
 	while (node) {
-		// console.log(node);
 		if (node.classList && node.classList.contains(className)) {
 			return node;
 		}
@@ -28,69 +49,66 @@ export default class MenuFlyout {
 		flyout.container.appendChild(flyout.itemList);
 		
 		flyout.params.items.forEach(item => {
-			let menuItem = document.createElement("div");
-			menuItem.className = "menu-flyout-item";
+			if (item.constructor.name == "VNode") {
+				let menuItem = new NodeRenderer(item);
+				
+				menuItem.addEventListener("click", () => {
+					flyout.hide();
+				});
+				
+				flyout.itemList.appendChild(menuItem);
+			} else {
+				let menuItem = document.createElement("div");
+				
+				if (item.separator) {
+					menuItem.className = "menu-item-separator";
+					
+					flyout.itemList.appendChild(menuItem);
+					return;
+				}
+				
+				menuItem.className = "menu-flyout-item";
 
-			if (item.icon) {
-				let menuItemIcon = document.createElement("div");
-				menuItemIcon.className = "menu-flyout-item-icon";
-				menuItem.appendChild(menuItemIcon);
-			
-				let icon = document.createElement("i");
-				icon.className = `icon ${item.icon}`;
-				menuItemIcon.appendChild(icon);
-			} else if (item.symbol) {
-				let menuItemIcon = document.createElement("div");
-				menuItemIcon.className = "menu-flyout-item-icon";
-				menuItem.appendChild(menuItemIcon);
-			
-				let icon = document.createElement("i");
-				icon.className = `symbol ${item.icon}`;
-				menuItemIcon.appendChild(icon);
-			}
-			
-			if (item.text) {
-				let menuItemContent = document.createElement("span");
-				menuItemContent.className = "menu-flyout-item-content";
-				menuItemContent.innerText = item.text;
-				menuItem.appendChild(menuItemContent);
-			}
-
-			if (item.disabled) {
-				menuItem.classList.add("disabled");
-			}
-
-			menuItem.addEventListener("click", () => {
-				if (typeof item.action === "function") {
-					item.action();
+				if (item.icon) {
+					let menuItemIcon = document.createElement("div");
+					menuItemIcon.className = "menu-flyout-item-icon";
+					menuItem.appendChild(menuItemIcon);
+				
+					let icon = document.createElement("i");
+					icon.className = `icon ${item.icon}`;
+					menuItemIcon.appendChild(icon);
+				} else if (item.symbol) {
+					let menuItemIcon = document.createElement("div");
+					menuItemIcon.className = "menu-flyout-item-icon";
+					menuItem.appendChild(menuItemIcon);
+				
+					let icon = document.createElement("i");
+					icon.className = `symbol ${item.icon}`;
+					menuItemIcon.appendChild(icon);
+				}
+				
+				if (item.text) {
+					let menuItemContent = document.createElement("span");
+					menuItemContent.className = "menu-flyout-item-content";
+					menuItemContent.innerText = item.text;
+					menuItem.appendChild(menuItemContent);
 				}
 
-				flyout.hide();
-			});
+				if (item.disabled) {
+					menuItem.classList.add("disabled");
+				}
 
-			flyout.itemList.appendChild(menuItem);
+				menuItem.addEventListener("click", () => {
+					if (typeof item.action === "function") {
+						item.action();
+					}
+
+					flyout.hide();
+				});
+
+				flyout.itemList.appendChild(menuItem);
+			}
 		});
-		
-		// let content = document.createElement("div");
-		// content.className = "flyout-content";
-		// flyout.container.appendChild(content);
-		
-		// if (flyout.params.content) {
-		// 	if (typeof flyout.params.content === "object") {
-		// 		content.appendChild(new NodeRenderer(flyout.params.content));
-		// 	} else {
-		// 		let parsedHTML = (new DOMParser()).parseFromString(flyout.params.content, "text/html");
-		// 		if (parsedHTML.body.children.length) {
-		// 			for (var i = 0; i < parsedHTML.body.children.length; i++) {
-		// 				content.appendChild(parsedHTML.body.children[i].cloneNode(true));
-		// 			}
-		// 		} else {
-		// 			let contentText = document.createElement("p");
-		// 			contentText.innerText = flyout.params.content;
-		// 			content.appendChild(contentText);
-		// 		}
-		// 	}
-		// }
 	}
 	
 	_hide_internal(event) {
@@ -144,12 +162,14 @@ export default class MenuFlyout {
 		flyout.eventListener = this._hide_internal.bind(flyout);
 
 		document.addEventListener("click", flyout.eventListener, true);
+		document.addEventListener("contextmenu", flyout.eventListener, true);
 	}
 	
 	hide() {
 		const flyout = this;
 
 		document.removeEventListener("click", flyout.eventListener, true);
+		document.removeEventListener("contextmenu", flyout.eventListener, true);
 		flyout.container.classList.add("animate-out");
 		flyout.container.classList.remove("animate-top");
 		flyout.container.classList.remove("animate-bottom");

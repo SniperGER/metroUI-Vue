@@ -24,17 +24,19 @@ import NavigationView from './NavigationView/Component.vue'
 import NavigationViewItem from './NavigationViewItem/Component.vue'
 import NavigationViewItemHeader from './NavigationViewItemHeader/Component.vue'
 import NavigationViewItemSeparator from './NavigationViewItemSeparator/Component.vue'
-import RadioButton from './RadioButton/Component.vue'
-import RatingControl from './RatingControl/Component.vue'
-import TextBlock from './TextBlock/Component.vue'
-import TextBox from './TextBox/Component.vue'
-import ToggleSwitch from './ToggleSwitch/Component.vue'
 import PasswordBox from './PasswordBox/Component.vue'
 import PersonPicture from './PersonPicture/Component.vue'
 import Pivot from './Pivot/Component.vue'
 import PivotItem from './PivotItem/Component.vue'
 import ProgressBar from './ProgressBar/Component.vue'
 import ProgressRing from './ProgressRing/Component.vue'
+import RadioButton from './RadioButton/Component.vue'
+import RatingControl from './RatingControl/Component.vue'
+import Slider from './Slider/Component.vue'
+import TextBlock from './TextBlock/Component.vue'
+import TextBox from './TextBox/Component.vue'
+import ToggleSwitch from './ToggleSwitch/Component.vue'
+import ToolTip from './ToolTip/Component.vue'
 
 import PathIcon from './PathIcon/Component.vue'
 import SymbolIcon from './SymbolIcon/Component.vue'
@@ -67,17 +69,19 @@ const components = [
 	NavigationViewItem,
 	NavigationViewItemHeader,
 	NavigationViewItemSeparator,
-	RadioButton,
-	RatingControl,
-	TextBlock,
-	TextBox,
-	ToggleSwitch,
 	PasswordBox,
 	PersonPicture,
 	Pivot,
 	PivotItem,
 	ProgressBar,
 	ProgressRing,
+	RadioButton,
+	RatingControl,
+	Slider,
+	TextBlock,
+	TextBox,
+	ToggleSwitch,
+	ToolTip,
 	
 	PathIcon,
 	SymbolIcon,

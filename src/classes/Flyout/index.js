@@ -115,15 +115,15 @@ export default class Flyout {
 		
 		flyout.eventListener = this._hide_internal.bind(flyout);
 
-		document.addEventListener("click", flyout.eventListener, true);
-		document.addEventListener("contextmenu", flyout.eventListener, true);
+		document.addEventListener("mousedown", flyout.eventListener, true);
+		document.addEventListener("touchstart", flyout.eventListener, true);
 	}
 	
 	hide() {
 		const flyout = this;
 
-		document.removeEventListener("click", flyout.eventListener, true);
-		document.removeEventListener("contextmenu", flyout.eventListener, true);
+		document.removeEventListener("mousedown", flyout.eventListener, true);
+		document.removeEventListener("touchstart", flyout.eventListener, true);
 		flyout.container.classList.add("animate-out");
 		flyout.container.classList.remove("animate-top");
 		flyout.container.classList.remove("animate-bottom");

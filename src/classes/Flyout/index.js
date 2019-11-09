@@ -73,7 +73,8 @@ export default class Flyout {
 	_hide_internal(event) {
 		const flyout = this;
 		
-		if (!event.target.parentNodeOfClass("flyout")) {
+		if (!event.target.parentNodeOfClass("flyout") &&
+			!event.target.parentNodeOfClass("combo-box-popup")) {
 			event.preventDefault();
 			event.stopPropagation();
 

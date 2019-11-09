@@ -7,7 +7,7 @@
 			<div class="decrease-rect" :style="decreaseRectFill" />
 		</div>
 		
-		<MetroToolTip ref="value">{{ value }}</MetroToolTip>
+		<MetroToolTip ref="value">{{ Math.floor(value) }}</MetroToolTip>
 	</div>
 </template>
 

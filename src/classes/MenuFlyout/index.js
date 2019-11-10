@@ -125,6 +125,10 @@ export default class MenuFlyout {
 	showAt(element) {
 		const flyout = this;
 		
+		if (document.body.contains(flyout.container)) {
+			flyout.hide();
+			return;
+		}
 		if (!element) return;
 		
 		flyout.container.classList.remove("animate-out");

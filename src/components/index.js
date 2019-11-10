@@ -7,6 +7,7 @@ import AppBarSeparator from './AppBarSeparator/Component.vue'
 import BackgroundThemeSelector from './BackgroundThemeSelector/Component.vue'
 import Button from './Button/Component.vue'
 import CheckBox from './CheckBox/Component.vue'
+import ColorPicker from './ColorPicker/Component.vue'
 import ComboBox from './ComboBox/Component.vue'
 import CommandBar from './CommandBar/Component.vue'
 import DataGrid from './DataGrid/Component.vue'
@@ -52,6 +53,7 @@ const components = [
 	BackgroundThemeSelector,
 	Button,
 	CheckBox,
+	ColorPicker,
 	ComboBox,
 	CommandBar,
 	DataGrid,
